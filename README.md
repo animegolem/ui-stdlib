@@ -55,10 +55,10 @@ contract names these halves — semantic inputs/events ARE the a11y
 tree's vocabulary; adapters project it to scenes. A11y contracts
 are the primary spec of every primitive, not a checklist.
 
-## License (lean recorded; owner's word at publication gate)
+## License: Apache-2.0 (RULED)
 
-Intended public release. Owner's candidates 2026-10-10: Apache-2.0
-leaning (house precedent via Renfield; patent grant; the registry
-copy-into-your-app model requires maximal permissiveness — upstream
-shadcn/Ark/Zag are all MIT, so inputs permit it). Final license is
-the owner's word at the publication gate, as with Renfield.
+Owner ruling 2026-10-10, estate-wide policy: Apache-2.0 for all
+language-shaped artifacts — this library included (with Renfield,
+the language work, and the stdlibs). Upstream inputs (shadcn, Ark,
+Zag — all MIT) permit it; manifests carry per-item provenance and
+attribution.
