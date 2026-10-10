@@ -1,0 +1,42 @@
+# ui-stdlib (working name — owner renames at will)
+
+The house UI standard library: Solid + JSX primitives behind
+house-owned façades, one interaction lineage (Ark UI / Zag, pinned
+by ceremony), source-owned registry manifests, agent-first lint.
+Founded 2026-10-10 at owner direction: "build a really big UI
+standard library — decompose systems into our primitives — and
+spend tokens doing that."
+
+## The law this repo inherits (pointers, not copies)
+
+- Dependency direction: consumers (expanding-worlds, the harness)
+  depend on this library; this library depends on neither.
+- One lineage: Ark/Zag behind façades; Kobalte/Corvu/React-Aria
+  are oracles and bake-off counterfactuals, never runtime peers.
+- Two-layer contract in every manifest: renderer-neutral semantic
+  inputs/events (consumer signals own meaning) + a DOM interaction
+  adapter (owns ephemeral mechanics). The GPU surface arrives
+  later as a second adapter, never as an API emulation.
+- Registry: source-owned manifests (upstream project, license,
+  version, SHA), deterministic content-addressed build artifacts;
+  transports are never trust roots.
+- Lint: diagnostics carry the violated contract, the approved
+  alternative, and where it is defined. Lint never authorizes; it
+  points to review.
+- Review tiers: LOAD-BEARING primitives (tree, splitter, focus/
+  dismissal, overlay stack) take the full loop — implementation,
+  adversarial fanout, lead verdict. LEAF components take desk pass
+  + contract tests + lint. The tier is named in each manifest.
+- Versions pin by ceremony (digest + parity receipt — tsgo
+  precedent). The Ark/Zag/Solid pin lands from the spike report,
+  which gates the first component wave; infrastructure waves are
+  not gated.
+- Decomposition doctrine: adopted systems are decomposed into
+  primitives carrying contracts, tests, and provenance — the
+  condenser method applied to UI. "Used a lot" earns promotion;
+  twice is a coincidence.
+
+Work tracking: RAG/ (house pattern) once the first wave is cut.
+Leads: atlas (review), Sol (code) — same channel discipline as
+expanding-worlds (.codex/, carrier, verdicts durable before
+knocks).
