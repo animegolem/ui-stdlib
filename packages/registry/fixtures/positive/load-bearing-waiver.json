@@ -1,0 +1,71 @@
+{
+  "$schema": "urn:ui-stdlib:schema:registry:v1",
+  "schemaVersion": 1,
+  "name": "fixture-load-bearing-registry",
+  "homepage": "https://example.invalid/ui",
+  "items": [
+    {
+      "manifestVersion": 1,
+      "name": "tree",
+      "type": "registry:ui",
+      "files": [
+        { "path": "tree/tree.ts", "type": "registry:ui", "sha256": "aaffbe02e4fdf20eed0c9d956dc8f797edf019e356bf35861d253a555fdfb08c" }
+      ],
+      "provenance": [
+        {
+          "role": "interaction-source",
+          "treatment": "adapted",
+          "identity": {
+            "name": "fixture-tree-machine",
+            "source": "https://example.invalid/tree",
+            "version": "5.39.3",
+            "sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+          },
+          "license": {
+            "spdx": "MIT",
+            "source": "https://example.invalid/tree/license"
+          },
+          "attribution": "Fixture tree authors",
+          "changes": ["Moved persistent selection into the semantic layer"]
+        }
+      ],
+      "cssTokens": {
+        "consumes": ["--ui-color-surface"],
+        "provides": [],
+        "escapes": [
+          {
+            "scope": "tree indentation guide",
+            "property": "inline-size",
+            "value": "1px",
+            "reason": "Device-pixel alignment is not a design color or spacing token.",
+            "rulingRef": "RFC-0001#tree-indentation"
+          }
+        ]
+      },
+      "a11y": {
+        "requirements": [
+          { "id": "tree.selection", "statement": "Selection remains semantic across scene adapters." }
+        ],
+        "tests": ["tree.selection"]
+      },
+      "boundary": {
+        "semantic": {
+          "inputs": ["expanded ids", "selected ids"],
+          "events": ["expand", "select"],
+          "owns": ["expansion and selection state"]
+        },
+        "domAdapter": {
+          "owns": ["focus movement", "keyboard navigation", "virtual row mechanics"]
+        }
+      },
+      "reviewTier": "load-bearing",
+      "reviewDeclaration": "Full adversarial fanout and lead ruling are required before promotion.",
+      "declarationHealth": {
+        "status": "waived",
+        "errorClasses": ["TS2693"],
+        "rulingRef": "SPIKE-UI-KIT-2026-10#declaration-health",
+        "rationale": "Pinned upstream declarations expose a verified type-only export defect."
+      }
+    }
+  ]
+}

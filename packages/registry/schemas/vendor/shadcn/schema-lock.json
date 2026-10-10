@@ -1,0 +1,23 @@
+{
+  "lockVersion": 1,
+  "profile": "shadcn",
+  "captured": "2026-10-10",
+  "schemas": [
+    {
+      "name": "registry",
+      "source": "https://ui.shadcn.com/schema/registry.json",
+      "upstreamSha256": "e716ebe595bbc189db2627cb75f0484cd765a09eb397a89b1f1c49074220d4bb",
+      "upstreamPath": "2026-10-10/upstream-registry.json",
+      "vendoredPath": "2026-10-10/registry.schema.json",
+      "vendoredSha256": "1c27ab8805f3c4e0523fdafdb364661352f3e11120ea0e06962b7d03af4253a5"
+    },
+    {
+      "name": "registry-item",
+      "source": "https://ui.shadcn.com/schema/registry-item.json",
+      "upstreamSha256": "cdf0fba75a26ebf594018264eff2d55407ec14deb3071d0fce0e2b20848e5d44",
+      "upstreamPath": "2026-10-10/upstream-registry-item.json",
+      "vendoredPath": "2026-10-10/registry-item.schema.json",
+      "vendoredSha256": "bbe7dfab6422c9c197d268c8cef18bf39229c87cd311573257b9595f9c8b26e3"
+    }
+  ]
+}

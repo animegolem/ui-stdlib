@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/coverage/**",
+    ".workspaces/**",
+    ".codex/**"
+  ],
+  "rules": {
+    "no-constant-binary-expression": "error",
+    "no-debugger": "error"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "tool": {
+    "name": "oxlint",
+    "version": "1.24.0"
+  },
+  "authority": "secondary",
+  "scope": "parser-and-corpus-health-only",
+  "customRuleExecution": false,
+  "limitation": "Pinned Oxlint cannot stably execute the custom JavaScript rules; ESLint v9 fixtures are the semantic authority.",
+  "expected": {
+    "corpusFiles": 6,
+    "exitCode": 0,
+    "parserDiagnostics": 0
+  },
+  "receipt": "dist/oxlint-parity-receipt.json"
+}

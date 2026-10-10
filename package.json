@@ -1,0 +1,33 @@
+{
+  "name": "ui-stdlib",
+  "version": "0.0.0",
+  "private": true,
+  "description": "House UI standard library: semantic contracts and scene adapters.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "packageManager": "pnpm@10.19.0",
+  "engines": {
+    "node": "24.10.0",
+    "pnpm": "10.19.0"
+  },
+  "scripts": {
+    "build": "pnpm -r --if-present build",
+    "schema": "pnpm --filter @ui-stdlib/registry test",
+    "lint": "pnpm --filter @ui-stdlib/tokens build && pnpm --filter @ui-stdlib/lint build && eslint . && pnpm --filter @ui-stdlib/lint lint:css && pnpm --filter @ui-stdlib/lint test:css-cli",
+    "lint:parity": "pnpm --filter @ui-stdlib/lint parity:oxlint",
+    "test": "pnpm -r --if-present test",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "rag:validate": "bash RAG/scripts/validate-rag.sh",
+    "validate": "pnpm run build && pnpm run schema && pnpm run lint && pnpm run lint:parity && pnpm run test && pnpm run rag:validate"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "ajv": "8.17.1",
+    "eslint": "9.38.0",
+    "json-canonicalize": "2.0.0",
+    "oxlint": "1.24.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.70.0",
+    "vitest": "3.2.4"
+  }
+}

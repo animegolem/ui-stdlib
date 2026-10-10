@@ -1,0 +1,75 @@
+{
+  "$schema": "urn:ui-stdlib:schema:registry:v1",
+  "schemaVersion": 1,
+  "name": "fixture-leaf-registry",
+  "homepage": "https://example.invalid/ui",
+  "items": [
+    {
+      "manifestVersion": 1,
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "files": [
+        { "path": "button/button.ts", "type": "registry:ui", "sha256": "4aa19eae313f23562c832a253c9500ead6692508029b3d2facd1186afc28f094" },
+        { "path": "button/button.css", "type": "registry:style", "sha256": "4d21b82d78323ec3a1a2829669fd08c6075ba99ed30c1e640cc349fd5cecc812" }
+      ],
+      "provenance": [
+        {
+          "role": "recipe-source",
+          "treatment": "adapted",
+          "identity": {
+            "name": "fixture-recipe",
+            "source": "https://example.invalid/recipe",
+            "version": "1.2.3",
+            "sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+          },
+          "license": {
+            "spdx": "MIT",
+            "source": "https://example.invalid/recipe/license"
+          },
+          "attribution": "Fixture recipe authors",
+          "changes": ["Replaced styling with house tokens"]
+        },
+        {
+          "role": "interaction-source",
+          "treatment": "reference",
+          "identity": {
+            "name": "fixture-interaction",
+            "source": "https://example.invalid/interaction",
+            "version": "5.39.3",
+            "sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+          },
+          "license": {
+            "spdx": "MIT",
+            "source": "https://example.invalid/interaction/license"
+          },
+          "attribution": "Fixture interaction authors"
+        }
+      ],
+      "cssTokens": {
+        "consumes": ["--ui-color-accent", "--ui-color-on-accent"],
+        "provides": [],
+        "escapes": []
+      },
+      "a11y": {
+        "requirements": [
+          { "id": "button.activation", "statement": "Activation emits the semantic activate event." }
+        ],
+        "tests": ["button.activation"]
+      },
+      "boundary": {
+        "semantic": {
+          "inputs": ["disabled", "pressed"],
+          "events": ["activate"],
+          "owns": ["activation state"]
+        },
+        "domAdapter": {
+          "owns": ["focus routing", "keyboard and pointer mechanics"]
+        }
+      },
+      "reviewTier": "leaf",
+      "reviewDeclaration": "Leaf desk pass, contract tests, and lint are required before promotion.",
+      "declarationHealth": { "status": "clean" }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "@ui-stdlib/lint",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./diagnostics.js": {
+      "types": "./dist/diagnostics.d.ts",
+      "import": "./dist/diagnostics.js"
+    }
+  },
+  "files": [
+    "dist",
+    "fixtures",
+    "CONTRACTS.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint:css": "node scripts/check-css-raw-colors.mjs ../..",
+    "test:css-cli": "node scripts/test-css-cli.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "parity:oxlint": "node scripts/check-oxlint-parity.mjs"
+  },
+  "dependencies": {
+    "@ui-stdlib/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "eslint": "9.38.0",
+    "oxlint": "1.24.0",
+    "typescript": "5.9.3",
+    "vitest": "3.2.4"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0 <10.0.0"
+  }
+}

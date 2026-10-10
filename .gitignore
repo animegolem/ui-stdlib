@@ -1,0 +1,27 @@
+.DS_Store
+
+# Portable package-manager and build outputs.
+node_modules/
+.pnpm-store/
+dist/
+coverage/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+
+# Independent clones created by RAG/scripts/workspace-create.sh.
+.workspaces/
+
+# The channel protocol and assignment briefs are tracked. Only runtime
+# mailbox, materialized carrier state, and ambient triage are local.
+.codex/inbox/
+.codex/outbox/
+.codex/archive/
+.codex/carrier/
+.codex/state/
+.codex/triage-report.md
+
+# Test-run residue.
+test-results/
+playwright-report/
+.rag-test.*

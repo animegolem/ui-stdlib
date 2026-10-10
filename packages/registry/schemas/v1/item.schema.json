@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "urn:ui-stdlib:schema:item:v1",
+  "title": "ui-stdlib registry item manifest v1",
+  "allOf": [
+    { "$ref": "urn:ui-stdlib:schema:vendor:shadcn:2026-10-10:item" },
+    {
+      "type": "object",
+      "properties": {
+        "manifestVersion": { "const": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+            },
+            "required": ["sha256"]
+          }
+        },
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/provenanceEntry" }
+        },
+        "cssTokens": { "$ref": "#/definitions/cssTokens" },
+        "a11y": { "$ref": "#/definitions/a11y" },
+        "boundary": { "$ref": "#/definitions/boundary" },
+        "reviewTier": { "enum": ["leaf", "load-bearing"] },
+        "reviewDeclaration": { "type": "string", "minLength": 1 },
+        "declarationHealth": { "$ref": "#/definitions/declarationHealth" }
+      },
+      "required": [
+        "manifestVersion",
+        "name",
+        "type",
+        "files",
+        "provenance",
+        "cssTokens",
+        "a11y",
+        "boundary",
+        "reviewTier",
+        "reviewDeclaration",
+        "declarationHealth"
+      ]
+    }
+  ],
+  "definitions": {
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "pattern": "^https://" },
+        "version": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      },
+      "required": ["name", "source", "version", "sha256"]
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "spdx": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "pattern": "^https://" }
+      },
+      "required": ["spdx", "source"]
+    },
+    "provenanceEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "role": { "enum": ["recipe-source", "interaction-source"] },
+        "treatment": { "enum": ["copied", "adapted", "reference"] },
+        "identity": { "$ref": "#/definitions/identity" },
+        "license": { "$ref": "#/definitions/license" },
+        "attribution": { "type": "string", "minLength": 1 },
+        "changes": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "required": ["role", "treatment", "identity", "license", "attribution"],
+      "allOf": [
+        {
+          "if": {
+            "properties": { "treatment": { "const": "adapted" } },
+            "required": ["treatment"]
+          },
+          "then": { "required": ["changes"] },
+          "else": { "not": { "required": ["changes"] } }
+        }
+      ]
+    },
+    "stringSet": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "tokenSet": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^--ui-[a-z0-9]+(?:-[a-z0-9]+)*$"
+      }
+    },
+    "cssTokens": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "consumes": { "$ref": "#/definitions/tokenSet" },
+        "provides": { "$ref": "#/definitions/tokenSet" },
+        "escapes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "scope": { "type": "string", "minLength": 1 },
+              "property": { "type": "string", "minLength": 1 },
+              "value": { "type": "string", "minLength": 1 },
+              "reason": { "type": "string", "minLength": 1 },
+              "rulingRef": { "type": "string", "minLength": 1 }
+            },
+            "required": ["scope", "property", "value", "reason", "rulingRef"]
+          }
+        }
+      },
+      "required": ["consumes", "provides", "escapes"]
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "requirements": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z][a-z0-9.-]*$" },
+              "statement": { "type": "string", "minLength": 1 }
+            },
+            "required": ["id", "statement"]
+          }
+        },
+        "tests": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^[a-z][a-z0-9.-]*$" }
+        }
+      },
+      "required": ["requirements", "tests"]
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "semantic": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "inputs": { "$ref": "#/definitions/stringSet" },
+            "events": { "$ref": "#/definitions/stringSet" },
+            "owns": { "$ref": "#/definitions/stringSet" }
+          },
+          "required": ["inputs", "events", "owns"]
+        },
+        "domAdapter": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "owns": {
+              "allOf": [
+                { "$ref": "#/definitions/stringSet" },
+                { "minItems": 1 }
+              ]
+            }
+          },
+          "required": ["owns"]
+        }
+      },
+      "required": ["semantic", "domAdapter"]
+    },
+    "declarationHealth": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": { "status": { "const": "clean" } },
+          "required": ["status"]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": { "const": "waived" },
+            "errorClasses": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "type": "string", "pattern": "^TS[0-9]{4,5}$" }
+            },
+            "rulingRef": { "type": "string", "minLength": 1 },
+            "rationale": { "type": "string", "minLength": 1 }
+          },
+          "required": ["status", "errorClasses", "rulingRef", "rationale"]
+        }
+      ]
+    }
+  }
+}
