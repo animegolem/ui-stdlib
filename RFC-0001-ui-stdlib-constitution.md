@@ -3,6 +3,7 @@
 | REVISION | DATE | CHANGE |
 |---|---|---|
 | r1 | 2026-10-10 | Founded: README law promoted per infra-wave r1 ruling 6 |
+| r2 | 2026-10-10 | Publication gate passed (owner's word): public origin exists at github.com/animegolem/ui-stdlib; origin-freshness checks ACTIVE, remote-waiver clauses retired |
 
 This document is the repo's normative law. The README is its porch
 summary; where they diverge, this RFC wins. Amendments bump the
