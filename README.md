@@ -54,3 +54,11 @@ equally illegal.** In this library: the manifest's two-layer
 contract names these halves — semantic inputs/events ARE the a11y
 tree's vocabulary; adapters project it to scenes. A11y contracts
 are the primary spec of every primitive, not a checklist.
+
+## License (lean recorded; owner's word at publication gate)
+
+Intended public release. Owner's candidates 2026-10-10: Apache-2.0
+leaning (house precedent via Renfield; patent grant; the registry
+copy-into-your-app model requires maximal permissiveness — upstream
+shadcn/Ark/Zag are all MIT, so inputs permit it). Final license is
+the owner's word at the publication gate, as with Renfield.
