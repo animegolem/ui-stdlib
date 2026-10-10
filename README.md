@@ -40,3 +40,17 @@ Work tracking: RAG/ (house pattern) once the first wave is cut.
 Leads: atlas (review), Sol (code) — same channel discipline as
 expanding-worlds (.codex/, carrier, verdicts durable before
 knocks).
+
+## The base unit (owner, 2026-10-10 — constitutional)
+
+An application IS an accessibility tree and its scene graph; the
+app is built over both. The a11y tree is the semantic truth — the
+SAME tree serves assistive technology and agents (the machine door;
+MCP tools derive from it). The scene graph is the human door.
+Nearly every application is therefore an MCP app AND a user app,
+dual-headed by construction. **An application without a scene
+graph is illegal; an application without an accessibility tree is
+equally illegal.** In this library: the manifest's two-layer
+contract names these halves — semantic inputs/events ARE the a11y
+tree's vocabulary; adapters project it to scenes. A11y contracts
+are the primary spec of every primitive, not a checklist.
