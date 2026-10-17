@@ -25,3 +25,6 @@ __pycache__/
 test-results/
 playwright-report/
 .rag-test.*
+/work/
+/work/*
+!/work/README.md
